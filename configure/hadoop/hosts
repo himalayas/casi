@@ -1,0 +1,5 @@
+127.0.0.1	localhost.localdomain	localhost
+10.13.120.226	client	hadoop-ThinkPad-T400
+10.13.120.232	namenode	job	lintian-ub
+10.13.120.233	s2	canggu-OptiPlex-760	mysql_slave1
+10.13.120.236	s1	lrqnxx-OptiPlex-760	mysql_master

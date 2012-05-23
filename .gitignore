@@ -1,0 +1,14 @@
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.ipr
+.dep.inc
+.idea/
+.svn/
+.git/
+.settings/
+.classpath
+nbproject/
+target/

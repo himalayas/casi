@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="index" extends="casi-default">
+	    <action name="addPerson" class="indexAction" method="addPerson">
+	        <result name="success">/WEB-INF/jsp/welcome.jsp</result>
+	    </action>
+	</package>
+	<package name="indexajax" extends="casi-ajax" namespace="/ajax">
+        <action name="reload" class="indexAction" method="reload">
+            <result name="success" type="json">
+                <param name="root">ajaxResult</param>
+            </result>
+        </action>
+        <action name="createIndex" class="indexAction" method="createIndex">
+            <result name="success" type="json">
+                <param name="root">ajaxResult</param>
+            </result>
+        </action>
+        <action name="query" class="indexAction" method="get">
+            <result name="success" type="json">
+                <param name="root">ajaxResult</param>
+            </result>
+        </action>
+	</package>
+</struts>

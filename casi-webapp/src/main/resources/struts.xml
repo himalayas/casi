@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<include file="struts-index.xml"/>
+    <package name="casi-default" extends="struts-default">
+        <interceptors>
+            <interceptor-stack name="casiStack">
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+            <interceptor-stack name="casiPublicStack">
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="casiStack"/>
+    </package>
+    <package name="casi-ajax" extends="json-default">
+        <interceptors>
+            <interceptor-stack name="casiAjaxStack">
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+            <interceptor-stack name="casiAjaxPublicStack">
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="casiAjaxStack"/>
+    </package>
+</struts>
