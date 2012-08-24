@@ -1,4 +1,3 @@
-/*
 package com.casi.demo.memcached;
 
 import net.spy.memcached.MemcachedClient;
@@ -8,12 +7,12 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
-*/
+
 /**
  * User: hadoop
  * Date: 11-12-31
  * Time: 下午3:42
- *//*
+ */
 
 public class MemCacheDemo {
 
@@ -31,16 +30,16 @@ public class MemCacheDemo {
     }
 
     public static void main(String[] args) throws IOException {
-        MemCacheDemo memCacheRW=new MemCacheDemo();
-        memCacheRW.add(5,null);
+        MemCacheDemo memCacheRW = new MemCacheDemo();
+        memCacheRW.add(5, null);
         memCacheRW.memClient.shutdown();
 
     }
 
-    */
-/**
+
+    /**
      * add data
-     *//*
+     */
 
     private void add(int size, List list) {
         for (int i = 0; i < size; i++) {
@@ -48,36 +47,35 @@ public class MemCacheDemo {
 
         }
         memClient.flush();
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             System.out.println(this.get("test" + i));
         }
     }
 
-    */
-/**
+
+    /**
      * get data
-     *//*
+     */
 
     private Object get(String key) {
         return memClient.get(key);
     }
 
-    */
-/**
+    /**
      * del data
-     *//*
+     */
 
     private void del(String key) {
         memClient.delete(key);
     }
 
-    */
-/**
+
+    /**
      * update data
-     *//*
+     */
 
     private void update(String key, Object val) {
         memClient.replace(key, 60, val);
     }
 }
-*/
+

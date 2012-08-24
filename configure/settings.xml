@@ -280,6 +280,15 @@ under the License.
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
+                <repository>
+                    <id>spy</id>
+                    <name>Spy Repository</name>
+                    <layout>default</layout>
+                    <url>http://files.couchbase.com/maven2/</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
