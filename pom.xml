@@ -12,9 +12,9 @@
             <id>default</id>
             <properties>
                 <props>casi.dev</props>
-                <spring.version>3.0.6.RELEASE</spring.version>
-                <struts.version>2.3.1.2</struts.version>
-                <mybatis.version>3.0.6</mybatis.version>
+                <spring.version>3.1.0.RELEASE</spring.version>
+                <struts.version>2.3.4.1</struts.version>
+                <mybatis.version>3.1.1</mybatis.version>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -24,18 +24,18 @@
             <id>test</id>
             <properties>
                 <props>casi.test</props>
-                <spring.version>3.0.6.RELEASE</spring.version>
-                <struts.version>2.3.1.2</struts.version>
-                <mybatis.version>3.0.6</mybatis.version>
+                <spring.version>3.1.0.RELEASE</spring.version>
+                <struts.version>2.3.4.1</struts.version>
+                <mybatis.version>3.1.1</mybatis.version>
             </properties>
         </profile>
          <profile>
             <id>real</id>
             <properties>
                 <props>casi.real</props>
-                <spring.version>3.0.6.RELEASE</spring.version>
-                <struts.version>2.3.1.2</struts.version>
-                <mybatis.version>3.0.6</mybatis.version>
+                <spring.version>3.1.0.RELEASE</spring.version>
+                <struts.version>2.3.4.1</struts.version>
+                <mybatis.version>3.1.1</mybatis.version>
             </properties>
         </profile>
     </profiles>
