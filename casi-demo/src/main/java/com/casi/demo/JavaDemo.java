@@ -1,8 +1,6 @@
 package com.casi.demo;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -13,7 +11,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class JavaDemo {
     public static void main(String[] args) {
 
+        String str="i love china";
 
+
+        System.out.println(Integer.toBinaryString(10));
+        System.out.println(16>>2);
+
+
+
+        Map map=new HashMap();
         Integer data1 =1;
         Integer data2 = 1;
         //whatever m_isInValue is, MeetingCount alert cares only m_threshold[MEETINGTOTAL]
