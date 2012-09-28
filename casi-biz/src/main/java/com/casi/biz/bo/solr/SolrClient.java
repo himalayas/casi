@@ -1,4 +1,3 @@
-/*
 package com.casi.biz.bo.solr;
 
 import org.apache.solr.client.solrj.SolrServer;
@@ -13,20 +12,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-*/
 /**
  * User: hadoop
  * Date: 12-2-3
- * Time: 下午4:38
- *//*
+ * Time: 下午4:38*/
+
 
 public class SolrClient {
     public static void main(String[] args) throws Exception{
 
         SolrClient solrClient=new SolrClient();
         solrClient.getDataFromDB();
-*/
-/*        String url = "http://localhost:8080/solr";
+        String url = "http://localhost:8080/solr";
         CommonsHttpSolrServer server = new CommonsHttpSolrServer( url );
         server.setSoTimeout(1000);  // socket read timeout
         server.setConnectionTimeout(100);
@@ -58,7 +55,7 @@ public class SolrClient {
 
         server.add( docs );
 
-        server.commit();*//*
+        server.commit();
 
     }
 
@@ -83,7 +80,6 @@ public class SolrClient {
 
     }
 
-        */
 /**
          * Takes an SQL ResultSet and adds the documents to solr. Does it in batches
          * of fetchSize.
@@ -93,8 +89,8 @@ public class SolrClient {
          * @return The number of documents added to solr.
          * @throws SQLException
          * @throws SolrServerException
-         * @throws IOException
-         *//*
+         * @throws IOException*/
+
 
         public long addResultSet(ResultSet rs) throws SQLException,
                 SolrServerException, IOException
@@ -106,21 +102,19 @@ public class SolrClient {
             int numColumns = rsm.getColumnCount();
             String[] colNames = new String[numColumns + 1];
 
-            */
 /**
              * JDBC numbers the columns starting at 1, so the normal java convention
-             * of starting at zero won't work.
-             *//*
+             * of starting at zero won't work.*/
+
 
             for (int i = 1; i < (numColumns + 1); i++)
             {
                 colNames[i] = rsm.getColumnName(i);
-                */
 /**
                  * If there are fields that you want to handle manually, check for
                  * them here and change that entry in colNames to null. This will
-                 * cause the loop in the next section to skip that database column.
-                 *//*
+                 * cause the loop in the next section to skip that database column.*/
+
 
                 // //Example:
                 // if (rsm.getColumnName(i) == "db_id")
@@ -136,11 +130,10 @@ public class SolrClient {
 
                 SolrInputDocument doc = new SolrInputDocument();
 
-                */
 /**
                  * At this point, take care of manual document field assignments for
-                 * which you previously assigned the colNames entry to null.
-                 *//*
+                 * which you previously assigned the colNames entry to null.*/
+
 
                 // //Example:
                 // doc.addField("solr_db_id", rs.getLong("db_id"));
@@ -197,11 +190,10 @@ public class SolrClient {
                 }
                 docs.add(doc);
 
-                */
 /**
                  * When we reach fetchSize, index the documents and reset the inner
-                 * counter.
-                 *//*
+                 * counter.*/
+
 
                 if (innerCount == fetchSize)
                 {
@@ -211,11 +203,10 @@ public class SolrClient {
                 }
             }
 
-            */
 /**
              * If the outer loop ended before the inner loop reset, index the
-             * remaining documents.
-             *//*
+             * remaining documents.*/
+
 
             if (innerCount != 0)
             {
@@ -225,4 +216,3 @@ public class SolrClient {
         }
 
 }
-*/

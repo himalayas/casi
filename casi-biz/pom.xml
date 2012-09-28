@@ -23,12 +23,12 @@
             <artifactId>lucene-core</artifactId>
             <version>3.5.0</version>
         </dependency>
-<!--        <dependency>
+        <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-dataimporthandler-extras</artifactId>
             <version>3.5.0</version>
-        </dependency>-->
-<!--        <dependency>
+        </dependency>
+        <dependency>
             <artifactId>solr-solrj</artifactId>
             <groupId>org.apache.solr</groupId>
             <version>3.5.0</version>
@@ -37,7 +37,7 @@
             <artifactId>solr-core</artifactId>
             <groupId>org.apache.solr</groupId>
             <version>3.5.0</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -48,11 +48,6 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>1.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
