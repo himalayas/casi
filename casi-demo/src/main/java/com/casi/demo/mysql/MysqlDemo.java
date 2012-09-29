@@ -11,7 +11,7 @@ import java.sql.*;
 public class MysqlDemo {
     public static void main(String[] args) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/casidb?useUnicode=true&characterEncoding=UTF-8", "root", "root");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/casi?useUnicode=true&characterEncoding=UTF-8", "root", "root");
         conn.setAutoCommit(false);
         String sql = "insert into person (name,age,birthday,address,school) values (?,?,now(),?,?)";
 
@@ -40,7 +40,7 @@ public class MysqlDemo {
                 " 西门 商 牟 佘 佴 伯 赏 南宫 墨 哈 谯 笪 年 爱 阳 佟";
 
         String[] xings = xing.split(" ");
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             int i1 = (int) (Math.random() * 100);
             int i2 = (int) (Math.random() * 100);
             int i3 = (int) (Math.random() * 100);
