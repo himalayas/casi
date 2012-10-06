@@ -68,12 +68,12 @@
         <dependency>
             <artifactId>solr-solrj</artifactId>
             <groupId>org.apache.solr</groupId>
-            <version>3.5.0</version>
+            <version>${solr.version}</version>
         </dependency>
         <dependency>
             <artifactId>solr-core</artifactId>
             <groupId>org.apache.solr</groupId>
-            <version>3.5.0</version>
+            <version>${solr.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.netty</groupId>
