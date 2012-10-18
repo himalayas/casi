@@ -5,6 +5,7 @@
 *.iml
 *.ipr
 .dep.inc
+*.pyc
 .idea/
 .svn/
 .git/
