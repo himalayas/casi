@@ -1,6 +1,5 @@
+# coding=utf-8
 from time import ctime
-
-__author__ = 'Think'
 from socket import *
 address=('localhost',80)
 socket_server=socket(AF_INET,SOCK_STREAM)
@@ -12,6 +11,6 @@ while True:
         data=cli_socket.recv(1024)
         if not data:
             break
-        print([ctime()],data.decode())
+        print([ctime()],data)
         cli_socket.send(data)
     cli_socket.close()
