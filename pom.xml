@@ -114,6 +114,7 @@
         <module>casi-demo</module>
         <module>casi-zookeeper</module>
         <module>casi-hbase</module>
+        <module>casi-rpc</module>
     </modules>
     <developers>
         <developer>
@@ -122,7 +123,6 @@
             <email>xiujun.guo@gmail.com</email>
             <organization>cisco</organization>
             <timezone>+8</timezone>
-            <roles>owner</roles>
         </developer>
     </developers>
 </project>
