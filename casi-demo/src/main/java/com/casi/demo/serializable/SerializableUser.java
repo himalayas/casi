@@ -13,14 +13,15 @@ public class SerializableUser {
         if(serializableFile.exists())
             serializableFile.delete();
         ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(serializableFile));
-        User user=new User();
+        User user=new User(121);
         user.setAge(100);
         user.setName("xiujguo");
         oos.writeObject(user);
         oos.close();
 
         ObjectInputStream ois=new ObjectInputStream(new FileInputStream(serializableFile));
-        ois.readObject();
+        User u= (User) ois.readObject();
+        System.out.println(u.getName());
 
     }
 }
