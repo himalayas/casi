@@ -1,7 +1,7 @@
 package com.casi.biz.bo;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: hadoop
@@ -9,5 +9,5 @@ import org.apache.commons.logging.LogFactory;
  * Time: 下午4:39
  */
 public class CasiBaseBO {
-    protected final Log boLogger = LogFactory.getLog(getClass());
+    protected Logger boLogger = LoggerFactory.getLogger(this.getClass());
 }

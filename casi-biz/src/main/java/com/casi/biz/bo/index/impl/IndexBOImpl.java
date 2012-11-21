@@ -118,7 +118,7 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
                 docs.clear();
             }
         } catch (Exception e) {
-            boLogger.error(e);
+            boLogger.error(e.getLocalizedMessage());
         } finally {
             indexWriter.commit();
             indexWriter.close();
