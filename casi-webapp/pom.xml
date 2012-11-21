@@ -24,6 +24,7 @@
             <artifactId>casi-commons</artifactId>
             <version>1.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
