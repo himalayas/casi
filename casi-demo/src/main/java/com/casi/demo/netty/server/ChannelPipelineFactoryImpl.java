@@ -21,6 +21,7 @@ public class ChannelPipelineFactoryImpl implements ChannelPipelineFactory {
             public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
                 //监听消息到达
                 Request obj = (Request) e.getMessage();
+                System.out.println("hello");
                 if (obj.getService().equals(IAnimalService.class)) {
                     Method targetMethod = obj.getService().getMethod(obj.getMethod(), new Class[0]);
                     Object result = targetMethod.invoke(new AnimalServiceImp(), obj.getParas());

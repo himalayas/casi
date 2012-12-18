@@ -10,5 +10,6 @@
         <property name="solrURL" value="${SOLR_URL}" />
         <property name="indexDir" value="${INDEX_DIR}"/>
     </bean>
+    <bean id="testBO" class="com.casi.biz.bo.test.impl.TestBOImpl"></bean>
 </beans>
 

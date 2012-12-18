@@ -7,7 +7,7 @@ package com.casi.commons.util;
  */
 public class Page {
     protected int start=0;
-    protected int pageSize=10;
+    protected int pageSize=1000;
 
     public int getStart() {
         return start;

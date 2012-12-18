@@ -11,14 +11,14 @@ import java.sql.*;
 public class MysqlDemo {
     public static void main(String[] args) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/casidb?useUnicode=true&characterEncoding=UTF-8", "root", "root");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/casi?useUnicode=true&characterEncoding=UTF-8", "root", "root");
         conn.setAutoCommit(false);
         String sql = "insert into person (name,age,birthday,address,school) values (?,?,now(),?,?)";
 
         PreparedStatement stmt = conn.prepareStatement(sql);
         long startTime = System.currentTimeMillis();
-        stmt.execute("delete from person");
-        conn.commit();
+//        stmt.execute("delete from person");
+//        conn.commit();
         String xing = "赵 钱 孙 李 周 吴 郑 王 冯 陈 楮 卫 蒋 沈 韩 杨 朱 秦 尤 许 何 吕 施 张 孔 曹" +
                 " 严 华 金 魏 陶 姜 戚 谢 邹 喻 柏 水 窦 章 云 苏 潘 葛 奚 范 彭 郎 鲁 韦 昌 马 苗 凤 花" +
                 " 方 俞 任 袁 柳 酆 鲍 史 唐 费 廉 岑 薛 雷 贺 倪 汤 滕 殷 罗 毕 郝 邬 安 常 乐 于 时 傅 " +
@@ -40,6 +40,7 @@ public class MysqlDemo {
                 " 西门 商 牟 佘 佴 伯 赏 南宫 墨 哈 谯 笪 年 爱 阳 佟";
 
         String[] xings = xing.split(" ");
+        int flag=1;
         for (int i = 0; i < 10000000; i++) {
             int i1 = (int) (Math.random() * 100);
             int i2 = (int) (Math.random() * 100);
@@ -52,9 +53,13 @@ public class MysqlDemo {
             stmt.setString(4, "www.anhui.com.cn");
             stmt.addBatch();
 
-            if (i % 1000 == 0) {
+            if (i % 10000 == 0) {
                 stmt.executeBatch();
                 conn.commit();
+                System.out.println((System.currentTimeMillis() - startTime) / 1000.0);
+                System.out.println("commit batch:"+flag);
+                System.out.println("--------------------------------------------");
+                flag+=1;
             }
         }
         stmt.executeBatch();

@@ -18,6 +18,9 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.NIOFSDirectory;
 import org.apache.lucene.store.SimpleFSDirectory;
 import org.apache.lucene.util.Version;
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
+import org.apache.solr.common.SolrInputDocument;
 //import org.apache.solr.client.solrj.SolrServer;
 //import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
 //import org.apache.solr.common.SolrInputDocument;
@@ -55,24 +58,28 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
     @Override
     public void reloadPerson() throws Exception {
         PersonDO person = new PersonDO();
-        List<PersonDO> personDOs = indexDAO.getData(person);
-/*        Collection<SolrInputDocument> docs = new ArrayList<SolrInputDocument>();
-        for (PersonDO personDO : personDOs) {
-            SolrInputDocument doc = new SolrInputDocument();
-            doc.addField("id", personDO.getId());
-            doc.addField("casi_id", "casi-" + personDO.getId());
-            doc.addField("casi_name", personDO.getName());
-            doc.addField("casi_age", personDO.getAge());
-            doc.addField("casi_birthday", personDO.getBirthday());
-            doc.addField("casi_address", personDO.getAddress());
-            doc.addField("casi_school", personDO.getSchool());
-            docs.add(doc);
+        while (true) {
+            List<PersonDO> personDOs = indexDAO.getData(person);
+            if (personDOs == null || personDOs.size() == 0)
+                return;
+            Collection<SolrInputDocument> docs = new ArrayList<SolrInputDocument>();
+            for (PersonDO personDO : personDOs) {
+                SolrInputDocument doc = new SolrInputDocument();
+                doc.addField("id", personDO.getId());
+                doc.addField("casi_id", "casi-" + personDO.getId());
+                doc.addField("casi_name", personDO.getName());
+                doc.addField("casi_age", personDO.getAge());
+                doc.addField("casi_birthday", personDO.getBirthday());
+                doc.addField("casi_address", personDO.getAddress());
+                doc.addField("casi_school", personDO.getSchool());
+                docs.add(doc);
+            }
+            SolrServer solrCore = new CommonsHttpSolrServer(solrURL);
+            solrCore.add(docs);
+            solrCore.optimize();
+            solrCore.commit();
+            person.setStart(person.getStart() + person.getPageSize());
         }
-        SolrServer solrCore = new CommonsHttpSolrServer(solrURL);
-        solrCore.add(docs);
-        solrCore.optimize();
-        solrCore.commit();*/
-
     }
 
 
@@ -111,7 +118,7 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
                 docs.clear();
             }
         } catch (Exception e) {
-            boLogger.error(e);
+            boLogger.error(e.getLocalizedMessage());
         } finally {
             indexWriter.commit();
             indexWriter.close();
@@ -126,9 +133,9 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
      */
     @Override
     public String getPerson(String q) throws Exception {
-    //数据存放路径
+        //数据存放路径
         Directory directory = new NIOFSDirectory(new File(indexDir));
-    //创建搜索对象
+        //创建搜索对象
         IndexSearcher is = new IndexSearcher(IndexReader.open(directory));
         QueryParser queryParser = new QueryParser(Version.LUCENE_35, "casi_name", new StandardAnalyzer(Version.LUCENE_35));
         Query query = queryParser.parse(q);

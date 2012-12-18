@@ -9,8 +9,14 @@
 	    <action name="addPerson" class="indexAction" method="addPerson">
 	        <result name="success">/WEB-INF/jsp/welcome.jsp</result>
 	    </action>
+
 	</package>
 	<package name="indexajax" extends="casi-ajax" namespace="/ajax">
+        <action name="test" class="testAction" method="test">
+            <result name="success" type="json">
+                <param name="root">ajaxResult</param>
+            </result>
+        </action>
         <action name="reload" class="indexAction" method="reload">
             <result name="success" type="json">
                 <param name="root">ajaxResult</param>
