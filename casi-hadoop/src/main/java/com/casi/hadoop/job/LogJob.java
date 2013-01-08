@@ -63,9 +63,9 @@ public class LogJob extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
 
-        String[] locals = {"/home/a/data/input/d0/d0_file0_0.txt",
-                           "/home/a/data/input/d1/d1_file0_0.txt",
-                           "/home/a/data/input/d2/d2_file0_0.txt"
+        String[] locals = {"/home/hadoop/test-data/input/d0/d0_file0_0.txt",
+                           "/home/hadoop/test-data/input/d1/d1_file0_0.txt",
+                           "/home/hadoop/test-data/input/d2/d2_file0_0.txt"
         };
 
         Configuration conf = new Configuration();
