@@ -114,7 +114,6 @@
         <module>casi-demo</module>
         <module>casi-zookeeper</module>
         <module>casi-hbase</module>
-        <module>casi-rpc</module>
     </modules>
     <developers>
         <developer>
