@@ -51,7 +51,7 @@ under the License.
   |
   | Default: ~/.m2/repository
     -->
-    <localRepository>c:/.m2/repository</localRepository>
+    <localRepository>/home/hadoop/.m2/repository</localRepository>
 
 
     <!-- interactiveMode
