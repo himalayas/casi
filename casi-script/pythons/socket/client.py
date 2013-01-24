@@ -1,6 +1,5 @@
-# coding=utf-8
+# -*-coding=utf-8-*-
 from socket import *
-import struct
 sockobj = socket(AF_INET, SOCK_STREAM)
 sockobj.connect(('localhost', 80))
 message='无论你使用哪一种地址家族。套接字的类型只有两种。一种是面向连接的套接字，即在通讯之\
