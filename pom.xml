@@ -33,7 +33,7 @@
                 <lucene.version>3.6.1</lucene.version>
             </properties>
         </profile>
-         <profile>
+        <profile>
             <id>real</id>
             <properties>
                 <props>casi.real</props>
@@ -47,13 +47,31 @@
     </profiles>
 
     <build>
-    	  <filters>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <filters>
             <filter>../${props}.properties</filter>
         </filters>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -63,6 +81,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <outputDirectory/>
@@ -71,7 +90,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>2.5.2</version>
                 <configuration>
                     <xmlOutput>true</xmlOutput>
                     <xmlOutputDirectory>target/site</xmlOutputDirectory>
@@ -82,26 +101,96 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.5</version>
             </plugin>
+            <!--单元测试覆盖率插件-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.5.2</version>
                 <configuration>
                     <formats>
                         <format>html</format>
                         <format>xml</format>
                     </formats>
                     <encoding>UTF-8</encoding>
+                    <check>
+                        <haltOnFailure>false</haltOnFailure>
+                        <branchRate>50</branchRate>
+                        <lineRate>50</lineRate>
+                        <totalBranchRate>50</totalBranchRate>
+                        <totalLineRate>50</totalLineRate>
+                        <packageLineRate>50</packageLineRate>
+                        <packageBranchRate>50</packageBranchRate>
+                    </check>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>clean</goal>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- groovy maven插件 -->
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <source/>
+                    <providerSelection>1.7</providerSelection>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.gmaven.runtime</groupId>
+                        <artifactId>gmaven-runtime-2.0</artifactId>
+                        <version>1.5</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>org.codehaus.groovy</groupId>
+                                <artifactId>groovy-all</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-all</artifactId>
+                        <version>2.0.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-maven</artifactId>
+                <version>0.7-groovy-2.0</version>
             </plugin>
         </plugins>
     </build>
-
     <dependencies>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>0.7-groovy-2.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!--        <dependency>
+                    <groupId>org.spockframework</groupId>
+                    <artifactId>spock-spring</artifactId>
+                    <version>0.7-groovy-2.0</version>
+                    <scope>test</scope>
+                </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

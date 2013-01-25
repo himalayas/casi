@@ -12,7 +12,6 @@
     <packaging>war</packaging>
     <name>casi-webapp</name>
     <url>http://maven.apache.org</url>
-
     <dependencies>
         <dependency>
             <groupId>com.casi</groupId>
@@ -89,34 +88,12 @@
 
     </dependencies>
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>**/*.properties</exclude>
-                </excludes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
         <finalName>casi-webapp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>tomcat-maven-plugin</artifactId>
+                <version>1.1</version>
                 <configuration>
                     <warDirectory>target/casi-webapp.war</warDirectory>
                     <contextFile>etc/tomcat-context.xml</contextFile>
@@ -125,7 +102,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.1-alpha-2</version>
+                <version>2.3</version>
                 <configuration>
                     <webResources>
                         <resource>
@@ -141,8 +118,5 @@
             </plugin>
         </plugins>
     </build>
-    <properties>
-        <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
-    </properties>
 </project>
 
