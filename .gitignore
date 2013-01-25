@@ -4,6 +4,7 @@
 *.ear
 *.iml
 *.ipr
+*.iws
 .dep.inc
 *.pyc
 .idea/
