@@ -16,12 +16,12 @@
             <value>utf-8</value>
         </property>
     </bean>
-    <bean id="globalDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+<!--    <bean id="globalDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName">
 			<value>java:/comp/env/jdbc/mysqlDataSource</value>
 		</property>
-	</bean>
-<!--    <bean id="globalDataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" destroy-method="close">
+	</bean>-->
+    <bean id="globalDataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${driverClassName}"/>
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
@@ -30,7 +30,7 @@
         <property name="maxActive" value="100"/>
         <property name="maxIdle" value="20"/>
         <property name="maxWait" value="30"/>
-    </bean>-->
+    </bean>
     <bean id="globalSqlMapClient" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="configLocation" value="classpath:/sqlmap-config.xml" />
         <property name="dataSource" ref="globalDataSource" />

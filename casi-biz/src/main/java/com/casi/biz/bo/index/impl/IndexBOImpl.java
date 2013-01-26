@@ -118,7 +118,7 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
                 docs.clear();
             }
         } catch (Exception e) {
-            boLogger.error(e.getLocalizedMessage());
+            boLogger.error("createIndex exception",e);
         } finally {
             indexWriter.commit();
             indexWriter.close();
@@ -133,14 +133,17 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
      */
     @Override
     public String getPerson(String q) throws Exception {
+        StringBuilder builder = new StringBuilder();
+        try{
         //数据存放路径
+            boLogger.debug(indexDir);
         Directory directory = new NIOFSDirectory(new File(indexDir));
         //创建搜索对象
         IndexSearcher is = new IndexSearcher(IndexReader.open(directory));
         QueryParser queryParser = new QueryParser(Version.LUCENE_35, "casi_name", new StandardAnalyzer(Version.LUCENE_35));
         Query query = queryParser.parse(q);
         TopDocs hits = is.search(query, 10);
-        StringBuilder builder = new StringBuilder();
+
         for (ScoreDoc scoreDoc : hits.scoreDocs) {
             Document doc = is.doc(scoreDoc.doc);
             builder.append(" [");
@@ -149,6 +152,10 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
             builder.append(" address:" + doc.get("casi_address"));
             builder.append(" school:" + doc.get("casi_school"));
             builder.append("] ");
+        }
+
+        }catch (Exception e){
+            boLogger.debug(e.getLocalizedMessage());
         }
         return builder.toString();
     }

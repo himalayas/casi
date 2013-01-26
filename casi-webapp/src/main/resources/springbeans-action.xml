@@ -7,6 +7,4 @@
 
     <bean id="indexAction" class="com.casi.web.action.index.IndexAction" scope="prototype">
     </bean>
-    <bean id="testAction" class="com.casi.web.action.test.TestAction" scope="prototype">
-    </bean>
 </beans>
