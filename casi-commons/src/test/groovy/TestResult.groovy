@@ -1,5 +1,5 @@
 import com.casi.commons.Result
-import util.SpockTestCaseBase
+import com.casi.commons.test.SpockTestCaseBase
 
 /**
  * User: Think

@@ -87,25 +87,25 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
      * 创建lucene索引
      */
     @Override
-    public void createIndex() throws Exception {
+    public boolean createIndex() throws Exception {
         long start = System.currentTimeMillis();
         IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_35, new StandardAnalyzer(Version.LUCENE_35));
         Directory directory = new SimpleFSDirectory(new File(indexDir));
         IndexWriter indexWriter = new IndexWriter(directory, indexWriterConfig);
         PersonDO person = new PersonDO();
         person.setPageSize(100000);
-        System.out.println("pageSize is:" + person.getPageSize());
         int s = 0;
         try {
             Collection<Document> docs = new ArrayList<Document>();
+            int i=0;
             while (true) {
                 person.setStart(s);
                 s = s + person.getPageSize();
-                System.out.println("start is:" + person.getStart());
+                boLogger.debug("start is:" + person.getStart());
                 List<PersonDO> personDOs = indexDAO.getData(person);
                 if (personDOs == null || personDOs.size() == 0)
                     break;
-                System.out.println("load data size is:" + personDOs.size());
+                boLogger.debug("load data size is:" + personDOs.size());
                 for (PersonDO personDO : personDOs) {
                     Document doc = new Document();
                     doc.add(new Field("casi_id", String.valueOf(personDO.getId()), Field.Store.YES, Field.Index.ANALYZED));
@@ -116,15 +116,19 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
                 }
                 indexWriter.addDocuments(docs);
                 docs.clear();
+                i++;
+                if (i>=10)
+                    break;
             }
         } catch (Exception e) {
             boLogger.error("createIndex exception",e);
+            return false;
         } finally {
             indexWriter.commit();
             indexWriter.close();
         }
-
         boLogger.info("更新索引耗时:" + (System.currentTimeMillis() - start) / 1000.0);
+        return true;
     }
 
 

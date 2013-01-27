@@ -1,6 +1,6 @@
 import com.casi.biz.bo.index.IndexBO
 import org.springframework.beans.factory.annotation.Autowired
-import util.SpockTestCaseBase
+import com.casi.commons.test.SpockTestCaseBase
 /**
  * User: Think
  * Date: 13-1-26

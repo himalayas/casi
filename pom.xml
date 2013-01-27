@@ -7,6 +7,10 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <name>casi</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
     <profiles>
         <profile>
             <id>default</id>
@@ -101,35 +105,17 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.5</version>
             </plugin>
-            <!--单元测试覆盖率插件-->
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.5.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.13</version>
                 <configuration>
-                    <formats>
-                        <format>html</format>
-                        <format>xml</format>
-                    </formats>
-                    <encoding>UTF-8</encoding>
-                    <check>
-                        <haltOnFailure>false</haltOnFailure>
-                        <branchRate>50</branchRate>
-                        <lineRate>50</lineRate>
-                        <totalBranchRate>50</totalBranchRate>
-                        <totalLineRate>50</totalLineRate>
-                        <packageLineRate>50</packageLineRate>
-                        <packageBranchRate>50</packageBranchRate>
-                    </check>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <forkMode>once</forkMode>
+                    <useFile>false</useFile>
+                    <disableXmlReport>true</disableXmlReport>
+                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>clean</goal>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- groovy maven插件 -->
@@ -175,18 +161,7 @@
         </plugins>
     </build>
     <dependencies>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <version>0.7-groovy-2.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-spring</artifactId>
-            <version>0.7-groovy-2.0</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -238,10 +213,29 @@
             <version>4.0.6</version>
         </dependency>
         <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>0.7-groovy-2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-spring</artifactId>
+            <version>0.7-groovy-2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock</artifactId>
+            <version>2.5.1</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

@@ -13,6 +13,6 @@ import java.util.List;
 public interface IndexBO {
     void addPerson(PersonDO person) throws SQLException;
     void reloadPerson() throws Exception;
-    void createIndex() throws Exception;
+    boolean createIndex() throws Exception;
     String getPerson(String q) throws Exception;
 }
