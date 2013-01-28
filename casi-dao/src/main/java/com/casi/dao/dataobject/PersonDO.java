@@ -16,7 +16,19 @@ public class PersonDO extends Page {
     private String address;
     private Date birthday;
     private String school;
-    
+
+
+    public PersonDO(String name, int age, String address, Date birthday, String school) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.birthday = birthday;
+        this.school = school;
+    }
+
+    public PersonDO() {
+    }
+
     //mysql分页
     public String getSchool() {
         return school;

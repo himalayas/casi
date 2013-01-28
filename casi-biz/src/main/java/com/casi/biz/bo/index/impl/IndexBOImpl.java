@@ -2,6 +2,7 @@ package com.casi.biz.bo.index.impl;
 
 import com.casi.biz.bo.CasiBaseBO;
 import com.casi.biz.bo.index.IndexBO;
+import com.casi.commons.Result;
 import com.casi.dao.index.IndexDAO;
 import com.casi.dao.dataobject.PersonDO;
 
@@ -47,8 +48,12 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
      * 向数据库添加数据
      */
     @Override
-    public void addPerson(PersonDO person) throws SQLException {
-        indexDAO.add(person);
+    public Result addPerson(PersonDO person) throws SQLException {
+        int code=indexDAO.add(person);
+        if (code>0)
+            return Result.successResult();
+        else
+            return Result.failureResult();
     }
 
 
@@ -151,15 +156,15 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
         for (ScoreDoc scoreDoc : hits.scoreDocs) {
             Document doc = is.doc(scoreDoc.doc);
             builder.append(" [");
-            builder.append(" id:" + doc.get("casi_id"));
-            builder.append(" name:" + doc.get("casi_name"));
-            builder.append(" address:" + doc.get("casi_address"));
-            builder.append(" school:" + doc.get("casi_school"));
+            builder.append(" id:").append(doc.get("casi_id"));
+            builder.append(" name:").append(doc.get("casi_name"));
+            builder.append(" address:").append(doc.get("casi_address"));
+            builder.append(" school:").append(doc.get("casi_school"));
             builder.append("] ");
         }
 
         }catch (Exception e){
-            boLogger.debug(e.getLocalizedMessage());
+            boLogger.error(e.getLocalizedMessage());
         }
         return builder.toString();
     }

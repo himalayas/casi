@@ -11,6 +11,6 @@ import java.util.List;
  * Time: 下午4:36
  */
 public interface IndexDAO {
-    public void add(PersonDO person) throws SQLException;
+    public int add(PersonDO person) throws SQLException;
     public List<PersonDO> getData(PersonDO person) throws SQLException;
 }

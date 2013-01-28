@@ -15,8 +15,8 @@ import java.util.List;
 public class IndexDAOImpl extends CasiBaseDAO implements IndexDAO {
 
     @Override
-    public void add(PersonDO person) throws SQLException {
-       this.getSqlSession().insert("index.INSERT-PERSON",person);
+    public int add(PersonDO person) throws SQLException {
+      return this.getSqlSession().insert("index.INSERT-PERSON",person);
     }
 
     @Override
