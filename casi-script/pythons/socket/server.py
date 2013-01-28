@@ -1,10 +1,11 @@
 #-*-coding=utf-8-*-
 
 from socket import *
+import traceback
 
 def run():
-    address=('',80)
-    socket_server=socket(AF_INET,SOCK_STREAM)
+    address=("localhost",8080)
+    socket_server=socket()
     socket_server.bind(address)
     socket_server.listen(5)
     while True:
@@ -12,18 +13,14 @@ def run():
         data=[]
         try:
             while True:
-                tmp=cli_socket.recv(1)
+                tmp=cli_socket.recv(1024)
                 if not tmp:
                     break
-                data.append('%s' % tmp)
+                data.append(tmp)
                 cli_socket.send('ok')
-            for d in data:
-                print str(d)
+            print str(data)
         except Exception,e:
-            print '%s:%s' % (e.__class__.__name__ , e)
-            import sys
-            exc_tuple = sys.exc_info()
-            print exc_tuple
+            traceback.print_exc()
         finally:
             cli_socket.close()
 
