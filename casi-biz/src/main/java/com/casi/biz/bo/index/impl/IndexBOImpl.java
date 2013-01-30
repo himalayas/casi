@@ -92,7 +92,7 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
      * 创建lucene索引
      */
     @Override
-    public boolean createIndex() throws Exception {
+    public boolean createIndex(int max) throws Exception {
         long start = System.currentTimeMillis();
         IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_35, new StandardAnalyzer(Version.LUCENE_35));
         Directory directory = new SimpleFSDirectory(new File(indexDir));
@@ -122,7 +122,7 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
                 indexWriter.addDocuments(docs);
                 docs.clear();
                 i++;
-                if (i>=10)
+                if (i>=max)
                     break;
             }
         } catch (Exception e) {
@@ -145,7 +145,6 @@ public class IndexBOImpl extends CasiBaseBO implements IndexBO {
         StringBuilder builder = new StringBuilder();
         try{
         //数据存放路径
-            boLogger.debug(indexDir);
         Directory directory = new NIOFSDirectory(new File(indexDir));
         //创建搜索对象
         IndexSearcher is = new IndexSearcher(IndexReader.open(directory));

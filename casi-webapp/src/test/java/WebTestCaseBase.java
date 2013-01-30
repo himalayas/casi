@@ -1,4 +1,7 @@
 import org.apache.struts2.StrutsSpringTestCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class WebTestCaseBase extends StrutsSpringTestCase {
     @Override
     protected String[] getContextLocations() {

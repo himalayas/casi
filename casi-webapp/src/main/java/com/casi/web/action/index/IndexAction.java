@@ -61,7 +61,7 @@ public class IndexAction extends BaseAction{
     
     public String createIndex() throws Exception {
         webLogger.info("开始创建Lucene索引........");
-        indexBO.createIndex();
+        indexBO.createIndex(1);
         ajaxResult=Result.successResult();
         return "success";
     }

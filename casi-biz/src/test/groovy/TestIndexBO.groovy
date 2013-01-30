@@ -17,14 +17,14 @@ class TestIndexBO extends SpockTestCaseBase {
     def "test indexBO"(){
         expect:
             indexBO.getPerson(name).length() >= size
-            print name+":"+  indexBO.getPerson(name)
+            println name+":"+  indexBO.getPerson(name)
         where:
             name|size
-            "xiujguo"|1
+            "薛 常"|1
     }
 
     def "test createIndex"(){
-        expect:indexBO.createIndex()
+        expect:indexBO.createIndex(1)
     }
 
     def "insert into person"(){

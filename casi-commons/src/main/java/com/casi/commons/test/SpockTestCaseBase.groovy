@@ -1,6 +1,8 @@
 package com.casi.commons.test
 
 import org.apache.struts2.StrutsSpringTestCase
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
