@@ -45,12 +45,12 @@ public class MysqlDemo {
             int i1 = (int) (Math.random() * 100);
             int i2 = (int) (Math.random() * 100);
             int i3 = (int) (Math.random() * 100);
-            String name = xings[i1] + " " + xings[i2];
+            String name = xings[i1].trim() + "" + xings[i2].trim();
             stmt.setString(1, name);
             stmt.setInt(2, i3);
 //            stmt.setDate(3, new Date(System.currentTimeMillis()));
-            stmt.setString(3, "www.taobao.com");
-            stmt.setString(4, "www.anhui.com.cn");
+            stmt.setString(3, "www.cisco.com");
+            stmt.setString(4, "www.cisco.com.cn");
             stmt.addBatch();
 
             if (i % 10000 == 0) {

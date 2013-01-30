@@ -2,13 +2,7 @@ package com.casi.commons.test
 
 import org.apache.struts2.StrutsSpringTestCase
 import org.springframework.test.context.ContextConfiguration
-import spock.lang.Specification
 
-/**
- * User: Think
- * Date: 13-1-26
- * Time: 上午10:52
- */
 @ContextConfiguration(locations = [
 "classpath*:/springbeans-biz-bo.xml",
 "classpath*:/springbeans-biz-tx.xml",
@@ -17,8 +11,6 @@ import spock.lang.Specification
 "classpath*:/springbeans-action.xml",
 "classpath*:/struts-index.xml",
 "classpath*:/struts.xml"])
-class SpockTestCaseBase extends Specification {
+class StrutsTestCaseBase extends StrutsSpringTestCase {
 
 }
-
-
