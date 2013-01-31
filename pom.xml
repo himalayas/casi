@@ -243,7 +243,8 @@
                 <configuration>
                     <dialect>org.hibernate.dialect.MySQLDialect</dialect>
                     <driverClass>com.mysql.jdbc.Driver</driverClass>
-                    <connectionUrl>jdbc:mysql://localhost:3306/casi?useUnicode=true&amp;characterEncoding=UTF-8</connectionUrl>
+                    <connectionUrl>jdbc:mysql://localhost:3306/casi?useUnicode=true&amp;characterEncoding=UTF-8
+                    </connectionUrl>
                     <username>root</username>
                     <password>root</password>
                 </configuration>
@@ -255,12 +256,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <!--            <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>emma-maven-plugin</artifactId>
-                            <version>1.0-alpha-3</version>
-                            <inherited>true</inherited>
-                        </plugin>-->
             <plugin>
                 <groupId>org.sonatype.maven.plugin</groupId>
                 <artifactId>emma-maven-plugin</artifactId>
@@ -316,40 +311,4 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>dashboard-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.6</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.13</version>
-                <configuration>
-                    <showSuccess>true</showSuccess>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>Codehaus repository</id>
-            <url>http://repository.codehaus.org/</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <developers>
-        <developer>
-            <name>xiujun guo</name>
-            <id>xiujguo</id>
-            <email>xiujun.guo@gmail.com</email>
-            <organization>cisco</organization>
-            <timezone>+8</timezone>
-        </developer>
-    </developers>
 </project>
