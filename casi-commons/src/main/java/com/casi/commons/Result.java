@@ -7,7 +7,7 @@ public class Result {
 
 	private int resultCode;
 	private String message;
-	private Map resultMap;
+	private Map<String,String> resultMap;
 	
 	public final static int SUCCESS = 1;
 	public final static int FAILURE = 0;
@@ -26,17 +26,13 @@ public class Result {
 	}
 	
 	public boolean isSuccess(){
-		if(this.resultCode==Result.SUCCESS){
-			return true;
-		}else{
-			return false;
-		}
+        return this.resultCode == Result.SUCCESS;
 	}
 
-	public Map getResultMap() {
+	public Map<String,String> getResultMap() {
 		return resultMap;
 	}
-	public void setResultMap(Map resultMap) {
+	public void setResultMap(Map<String,String> resultMap) {
 		this.resultMap = resultMap;
 	}
 	
