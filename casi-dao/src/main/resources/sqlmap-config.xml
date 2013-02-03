@@ -15,6 +15,6 @@
     </settings>
 
 	<mappers>
-        <mapper resource="com/casi/dao/index/maps/sqlmap-index.xml"/>
+        <mapper resource="sqlmaps/sqlmap-index.xml"/>
     </mappers>
 </configuration>
