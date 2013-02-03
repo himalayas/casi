@@ -213,7 +213,8 @@
                 <configuration>
                     <dialect>org.hibernate.dialect.MySQLDialect</dialect>
                     <driverClass>com.mysql.jdbc.Driver</driverClass>
-                    <connectionUrl>jdbc:mysql://localhost:3306/casi?useUnicode=true&amp;characterEncoding=UTF-8
+                    <connectionUrl>
+                        jdbc:mysql://localhost:3306/casi?useUnicode=true&amp;characterEncoding=UTF-8
                     </connectionUrl>
                     <username>root</username>
                     <password>root</password>
@@ -233,12 +234,17 @@
             </plugin>
             <!-- groovy maven插件 -->
             <plugin>
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-maven</artifactId>
+                <version>0.7-groovy-2.0</version>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
                 <version>1.5</version>
                 <configuration>
                     <source/>
-                    <providerSelection>1.7</providerSelection>
+                    <providerSelection>2.0</providerSelection>
                 </configuration>
                 <executions>
                     <execution>
@@ -265,11 +271,6 @@
                         <version>2.0.5</version>
                     </dependency>
                 </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.spockframework</groupId>
-                <artifactId>spock-maven</artifactId>
-                <version>0.7-groovy-2.0</version>
             </plugin>
         </plugins>
     </build>
