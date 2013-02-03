@@ -105,7 +105,7 @@
                 <version>2.3</version>
                 <configuration>
                     <warName>casi-webapp</warName>
-                    <containerConfigXML>etc/casi-context.xml</containerConfigXML>
+                <!--<containerConfigXML>etc/casi-context.xml</containerConfigXML>-->
                 </configuration>
             </plugin>
         </plugins>

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Context>
-<!--<WatchedResource>WEB-INF/web.xml</WatchedResource>
+<Context path="/casi" docBase=""   reloadable="true" crossContext="false">
+<WatchedResource>WEB-INF/web.xml</WatchedResource>
     <Resource name="jdbc/mysqlDataSource" auth="Container" type="javax.sql.DataSource"
     driverClassName="com.mysql.jdbc.Driver"
-    url="jdbc:mysql://10.13.120.232:3306/phpdb?useUnicode=true&amp;characterEncoding=utf8"
+    url="jdbc:mysql://localhost:3306/casi?useUnicode=true&amp;characterEncoding=utf8"
     username="root"
     password="root"
     maxActive="100"
     maxIdle="2"
-    maxWait="-1"/>-->
+    maxWait="-1"/>
 </Context>

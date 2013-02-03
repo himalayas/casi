@@ -7,7 +7,7 @@ public class WebTestCaseBase extends StrutsSpringTestCase {
     protected String[] getContextLocations() {
         return new String[] {"classpath*:/springbeans-biz-bo.xml",
                 "classpath*:/springbeans-biz-tx.xml",
-                "classpath*:/springbeans-dao-ds.xml",
+                "classpath*:/springbeans-dao-ds-test.xml",
                 "classpath*:/springbeans-dao-beans.xml",
                 "classpath*:/springbeans-action.xml",
                 "classpath*:/struts-index.xml",
