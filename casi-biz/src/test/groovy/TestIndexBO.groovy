@@ -33,9 +33,4 @@ class TestIndexBO extends SpockTestCaseBase {
             new PersonDO("cisco",88,"安徽合肥",new Date(),"cisco")|1
             new PersonDO("xiujguo",18,"安徽合肥",new Date(),"cisco")|1
     }
-
-    def "test get test.txt"(){
-        expect:
-        print Thread.currentThread().getContextClassLoader().getResource("").openStream()
-    }
 }
