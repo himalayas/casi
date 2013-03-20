@@ -20,6 +20,7 @@ public class IndexAction extends BaseAction{
     public String addPerson() throws Exception {
         webLogger.info(person.toString());
         indexBO.addPerson(person);
+        ajaxResult=Result.successResult();
         return "success";
     }
     
