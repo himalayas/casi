@@ -30,7 +30,7 @@ class TestIndexBO extends SpockTestCaseBase {
     def "insert into person"(){
          expect: code==indexBO.addPerson(p).resultCode
          where:p|code
-            new PersonDO("xiujguo",18,"安徽合肥",new Date(),"cisco")|1
+            new PersonDO("cisco",88,"安徽合肥",new Date(),"cisco")|1
             new PersonDO("xiujguo",18,"安徽合肥",new Date(),"cisco")|1
     }
 
