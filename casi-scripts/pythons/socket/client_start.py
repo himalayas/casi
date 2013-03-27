@@ -1,14 +1,15 @@
 #-*-coding:utf-8-*-
 import traceback
 import select
-import socket_client
+from pythons.socket import socket_client
+
 class ClientManager(object):
     def __init__(self):
         self.clientList=[]
         self.fds={}
 
     def addClient(self,ip=None,port=None):
-        client=socket_client.SocketClient(ip=ip,port=port)
+        client= socket_client.SocketClient(ip=ip,port=port)
         try:
             client.connect()
             self.clientList.append(client)
