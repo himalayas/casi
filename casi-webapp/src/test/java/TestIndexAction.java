@@ -22,7 +22,7 @@ public class TestIndexAction extends WebTestCaseBase {
         ActionProxy proxy=getActionProxy("/ajax/query.action");
         try {
             IndexAction ia=(IndexAction)proxy.getAction();
-            String result=proxy.execute(); //将返回Action方法 返回的 SUCCESS or ERROR
+            String result=proxy.execute(); //将得到Action方法 返回的 SUCCESS or ERROR
             assertEquals("success",result);
             Map map=ia.getAjaxResult().getResultMap();//要获取Action 执行后封装的结果数据，这行必须写在excute()方法被调用后
             assertNotNull(map.get("res"));

@@ -1,19 +1,23 @@
 package com.casi.demo.jvm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * User: Think
  * Date: 12-8-22
  * Time: 下午10:26
  */
 public class JVMGC {
+//-Xms30m -Xmx30m -Xmn10m -XX:+UseParallelGC -XX:+PrintGCDetails
     public static void main(String[] args) {
-        byte [] byte1=new byte[1024*1024*1];
-        byte [] byte2=new byte[1024*1024*1];
-        byte [] byte3=new byte[1024*1024*1];
-        byte [] byte4=new byte[1024*1024*1];
-        byte [] byte5=new byte[1024*1024*1];
-        byte [] byte6=new byte[1024*1024*1];
-        byte [] byte7=new byte[1024*1024*1];
-        byte [] byte8=new byte[1024*1024*1];
-    }
+        List<Object> caches=new ArrayList<Object>();
+        for(int i=0;i<7;i++){
+            caches.add(new byte[1024*1024*3]);
+            }
+        caches.clear();
+        for(int i=0;i<2;i++){
+            caches.add(new byte[1024*1024*3]);
+            }
+        }
 }
