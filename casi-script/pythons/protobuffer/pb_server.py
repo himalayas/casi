@@ -1,3 +1,9 @@
 #-*-coding=UTF-8-*-
-__author__ = 'Think'
-class PBServer(socket)
+import SocketServer
+from request_handler import RequestHandler
+
+class PBServer(SocketServer.TCPServer):
+    pass
+if __name__=="__main__":
+    server=PBServer(("localhost",8080),RequestHandler)
+    server.serve_forever()
