@@ -23,8 +23,9 @@ public class WebServer {
                 100,
                 1000,
                 TimeUnit.MILLISECONDS,
-                new ArrayBlockingQueue<Runnable>(100));
-
+                new ArrayBlockingQueue<Runnable>(100),
+                new ThreadPoolExecutor.AbortPolicy()
+        );
             ServerSocket ss=new ServerSocket(80);
             while (true){
                 final Socket socket=ss.accept();
