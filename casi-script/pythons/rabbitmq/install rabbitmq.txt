@@ -19,20 +19,15 @@ create rabbitmq-env.conf
 create rabbitmq.config
 
 
-
--------------安装插件
 rabbitmq-plugins enable rabbitmq_management
 
--------------权限控制
-root是超级用户
 ./rabbitmqctl add_user root root
 ./rabbitmqctl set_user_tags root administrator
 ./rabbitmqctl set_permissions -p / root ".*" ".*" ".*"
 
-nbr局部用户
 ./rabbitmqctl add_user nbr nbr
 ./rabbitmqctl add_vhost /nbr_vhost
 ./rabbitmqctl set_permissions -p /nbr_vhost nbr ".*" ".*" ".*"
-----删除默认用户
+
 ./rabbitmqctl delete_user guest
 ------------------------
