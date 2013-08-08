@@ -3,7 +3,7 @@ import logging
 import traceback
 import pika
 import time
-import acknowledge
+# import acknowledge
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
               '-35s %(lineno) -5d: %(message)s')
 LOGGER = logging.getLogger(__name__)
@@ -19,7 +19,7 @@ class Consumer(object):
         self._closing = True
         self._consumer_tag = None
         self._url = amqp_url
-        self.session=acknowledge.Session()
+        # self.session=acknowledge.Session()
 
     def connect(self):
         self._closing=False
@@ -70,8 +70,8 @@ class Consumer(object):
         try:
             LOGGER.info('Received message # %s from %s: %s',basic_deliver.delivery_tag, properties.app_id, body)
             # TODO
-            self.session.put_task(task=(basic_deliver.delivery_tag,(unused_channel,basic_deliver.delivery_tag)))
-            LOGGER.info('session length %s jobID[%s]',len(self.session.task_map),json.loads(body)["body"]["jobID"])
+            # self.session.put_task(task=(basic_deliver.delivery_tag,(unused_channel,basic_deliver.delivery_tag)))
+            # LOGGER.info('session length %s jobID[%s]',len(self.session.task_map),json.loads(body)["body"]["jobID"])
             self.acknowledge_message(basic_deliver.delivery_tag)
         except:
             LOGGER.error("on_message %s",traceback)
@@ -115,7 +115,7 @@ def main():
     # amqp://username:password@host:port/<virtual_host>[?query-string]
     consumer = Consumer('amqp://nbr:nbr@10.224.57.118:8111/%2Fnbr_vhost')
     try:
-        consumer.session.start()
+        # consumer.session.start()
         consumer.start()
     except:
         consumer.reconnect()

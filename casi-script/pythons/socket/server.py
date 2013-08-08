@@ -1,6 +1,7 @@
 #-*-coding=utf-8-*-
 
 from socket import *
+import struct
 import traceback
 
 def run():
@@ -9,16 +10,16 @@ def run():
     socket_server.bind(address)
     socket_server.listen(5)
     while True:
-        cli_socket,cli_address=socket_server.accept()
-        data=[]
         try:
+            cli_socket,cli_address=socket_server.accept()
+            tmp=''
             while True:
-                tmp=cli_socket.recv(1024)
-                if not tmp:
+                data=cli_socket.recv(4)
+                if not data:
                     break
-                data.append(tmp)
-                cli_socket.send('ok')
-            print str(data)
+                tmp+=data
+            print struct.unpack_from("!2I",tmp)
+            print tmp
         except Exception,e:
             traceback.print_exc()
         finally:
