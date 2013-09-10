@@ -14,11 +14,11 @@ def run():
             cli_socket,cli_address=socket_server.accept()
             tmp=''
             while True:
-                data=cli_socket.recv(4)
+                data=cli_socket.recv(1)
                 if not data:
                     break
                 tmp+=data
-            print struct.unpack_from("!2I",tmp)
+            struct.unpack_from("!2I",tmp)
             print tmp
         except Exception,e:
             traceback.print_exc()
