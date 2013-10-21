@@ -20,6 +20,7 @@
         <module>casi-demo</module>
         <module>casi-zookeeper</module>
         <module>casi-hbase</module>
+        <module>casi-jdo</module>
     </modules>
     <profiles>
         <profile>
@@ -98,6 +99,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>

@@ -12,6 +12,8 @@ import spock.lang.Specification
 "classpath*:/springbeans-biz-tx.xml",
 "classpath*:/springbeans-dao-ds-test.xml",
 "classpath*:/springbeans-dao-beans.xml",
+"classpath*:/springbeans-jdo-ds.xml",
+"classpath*:/springbeans-jdo-beans.xml",
 "classpath*:/springbeans-action.xml",
 "classpath*:/struts-index.xml",
 "classpath*:/struts.xml"])
