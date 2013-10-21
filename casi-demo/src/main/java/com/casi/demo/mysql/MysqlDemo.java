@@ -14,7 +14,6 @@ public class MysqlDemo {
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/casi?useUnicode=true&characterEncoding=UTF-8", "root", "root");
         conn.setAutoCommit(false);
         String sql = "insert into person (name,age,birthday,address,school) values (?,?,now(),?,?)";
-
         PreparedStatement stmt = conn.prepareStatement(sql);
         long startTime = System.currentTimeMillis();
 //        stmt.execute("delete from person");
