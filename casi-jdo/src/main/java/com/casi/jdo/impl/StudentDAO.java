@@ -1,6 +1,6 @@
 package com.casi.jdo.impl;
 
-import com.casi.jdo.base.BaseDAOImpl;
+import com.casi.jdo.base.BaseDAO;
 import com.casi.jdo.dataobject.StudentDO;
 
 /**
@@ -8,8 +8,8 @@ import com.casi.jdo.dataobject.StudentDO;
  * Date: 13-10-21
  * Time: 下午9:03
  */
-public class StudentDAOImpl extends BaseDAOImpl<StudentDO> {
-    public StudentDAOImpl() {
+public class StudentDAO extends BaseDAO<StudentDO> {
+    public StudentDAO() {
         super(StudentDO.class);
     }
 }

@@ -21,7 +21,7 @@
 			<value>java:/comp/env/jdbc/mysqlDataSource</value>
 		</property>
 	</bean>-->
-    <bean id="globalDataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" destroy-method="close">
+    <bean id="globalDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${driverClassName}"/>
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>

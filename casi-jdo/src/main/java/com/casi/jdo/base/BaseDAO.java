@@ -1,19 +1,74 @@
 package com.casi.jdo.base;
+
+import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
+import org.springframework.orm.jdo.support.JdoDaoSupport;
 
-public interface BaseDAO<T extends BaseDO>
-{
-    public void delete(T o);
+public abstract class BaseDAO<T>{
+    private PersistenceManagerFactory persistenceManagerFactory = null;
 
-    public void deleteAll(List<T> list);
+    private Class<T> domainClass;
 
-    public T findById(long id);
+    public BaseDAO(Class<T> domainClass) {
+        this.domainClass = domainClass;
+    }
 
-    public void save(T o);
+    @Transactional
+    public void delete(T object) {
+        getJdoTemplate().deletePersistent(object);
+    }
 
-    public void saveAll(List<T> list);
+    @Transactional
+    public void deleteAll(List<T> list){
+        getJdoTemplate().deletePersistentAll(list);
+    }
 
-    public List<T> findAll();
+    @Transactional
+    public T findById(long id) {
+        return (T) getJdoTemplate().getObjectById(domainClass, id);
+    }
 
-    public int countAll();
+    @Transactional
+    public void save(T object) {
+        getJdoTemplate().makePersistent(object);
+    }
+
+    @Transactional
+    public void saveAll(List<T> list){
+        getJdoTemplate().makePersistentAll(list);
+    }
+
+    protected Query newQuery()
+    {
+        return getJdoTemplate().newQuery(domainClass);
+    }
+
+    @Transactional
+    public List<T> findAll() {
+        Query query = newQuery();
+        Object r = query.execute();
+        return new ArrayList<T>( (Collection<T>) r );
+    }
+
+    @Transactional
+    public int countAll() {
+        return findAll().size();
+    }
+
+    private PersistenceManager getJdoTemplate(){
+        return this.persistenceManagerFactory.getPersistenceManager();
+    }
+
+    public void setPersistenceManagerFactory(PersistenceManagerFactory persistenceManagerFactory) {
+        this.persistenceManagerFactory = persistenceManagerFactory;
+    }
+
+    public PersistenceManagerFactory getPersistenceManagerFactory() {
+        return persistenceManagerFactory;
+    }
 }
