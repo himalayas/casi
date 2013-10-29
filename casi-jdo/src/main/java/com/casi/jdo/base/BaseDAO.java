@@ -1,5 +1,7 @@
 package com.casi.jdo.base;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,9 +9,9 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
-import org.springframework.orm.jdo.support.JdoDaoSupport;
 
 public abstract class BaseDAO<T>{
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
     private PersistenceManagerFactory persistenceManagerFactory = null;
 
     private Class<T> domainClass;
@@ -60,7 +62,7 @@ public abstract class BaseDAO<T>{
         return findAll().size();
     }
 
-    private PersistenceManager getJdoTemplate(){
+    protected PersistenceManager getJdoTemplate(){
         return this.persistenceManagerFactory.getPersistenceManager();
     }
 
