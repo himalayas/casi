@@ -23,6 +23,11 @@
             <artifactId>casi-commons</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.casi</groupId>
+            <artifactId>casi-service</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.struts</groupId>
