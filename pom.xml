@@ -14,7 +14,7 @@
     <modules>
         <module>casi-commons</module>
         <module>casi-dao</module>
-        <module>casi-jdo</module>
+        <!--<module>casi-jdo</module>-->
         <module>casi-biz</module>
         <module>casi-webapp</module>
         <module>casi-hadoop</module>
