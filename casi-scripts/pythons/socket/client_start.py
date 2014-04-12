@@ -1,7 +1,9 @@
 #-*-coding:utf-8-*-
 import traceback
 import select
-import socket_client
+
+from pythons.socket import socket_client
+
 
 class ClientManager(object):
     def __init__(self):

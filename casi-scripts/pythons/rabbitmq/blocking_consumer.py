@@ -1,10 +1,11 @@
 import json as org_json
 import logging
-import threading
 import traceback
-import pika
 import time
-import acknowledge
+
+import pika
+from pythons.rabbitmq import acknowledge
+
 
 LOG_FORMAT = ('%(levelname) -10s %(asctime)s %(name) -30s %(funcName) '
               '-35s %(lineno) -5d: %(message)s')
@@ -23,7 +24,7 @@ class BlockingConsumer:
         self._closing = True
         self._consumer_tag = None
         self._url = url
-        self.session=acknowledge.Session()
+        self.session= acknowledge.Session()
 
     def connect(self):
         self._connection=  pika.BlockingConnection(pika.URLParameters(url=self._url))

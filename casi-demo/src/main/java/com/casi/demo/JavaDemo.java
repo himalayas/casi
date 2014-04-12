@@ -12,7 +12,12 @@ public class JavaDemo {
     public static void main(String[] args) {
 
         String str="i love china";
-
+        int ii=8;
+        Integer j=new Integer(8);
+        if(ii==j)
+            System.out.println("1 true");
+        if(j==ii)
+            System.out.println("2 true");
 
         System.out.println(Integer.toBinaryString(10));
         System.out.println(16>>2);

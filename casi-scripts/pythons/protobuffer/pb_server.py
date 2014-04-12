@@ -1,6 +1,8 @@
 #-*-coding=UTF-8-*-
 import SocketServer
-from request_handler import RequestHandler
+
+from pythons.protobuffer.request_handler import RequestHandler
+
 
 class PBServer(SocketServer.TCPServer):
     pass
