@@ -32,12 +32,12 @@ public class ElasticSearchClient {
             Random random=new Random();
             String id=String.valueOf(random.nextInt());
             System.out.println(id);
-            bulkRequest.add(client.prepareIndex("google-index", "google", id)
+            bulkRequest.add(client.prepareIndex("facebook-index", "facebook", id)
                             .setSource(jsonBuilder()
                                             .startObject()
-                                            .field("username", "谷歌日志")
+                                            .field("username", "facebook-搜索日志")
                                             .field("date", new Date())
-                                            .field("message", "消息")
+                                            .field("message", "facebook-搜索")
                                             .endObject()
                             )
             );
