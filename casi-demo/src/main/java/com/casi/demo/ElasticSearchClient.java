@@ -5,6 +5,8 @@ import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.node.Node;
 import org.elasticsearch.node.NodeBuilder;
@@ -20,24 +22,38 @@ import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
  */
 public class ElasticSearchClient {
     public static void main(String[] args) throws IOException {
-//        http://10.194.245.180/
-//        Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("10.194.245.180", 9300));
-        Client client = new TransportClient().addTransportAddress(new InetSocketTransportAddress("10.224.38.191", 9300));
+        Settings settings = ImmutableSettings.settingsBuilder()
+                .put("cluster.name", "webex-cluster")
+                .put("number_of_shards",2)
+                .put("number_of_replicas",2)
+                .build();
+        Client client = new TransportClient(settings)
+                .addTransportAddress(new InetSocketTransportAddress("10.224.57.165", 9300))
+                .addTransportAddress(new InetSocketTransportAddress("10.224.57.166", 9300));
         BulkRequestBuilder bulkRequest;
-
-// either use client#prepare, or use Requests# to directly build index/delete requests
         BulkResponse bulkResponse;
         do {
             bulkRequest = client.prepareBulk();
             Random random=new Random();
             String id=String.valueOf(random.nextInt());
-            System.out.println(id);
-            bulkRequest.add(client.prepareIndex("facebook-index", "facebook", id)
+            bulkRequest.add(client.prepareIndex("eventlog-index", "eventlog-type", id)
                             .setSource(jsonBuilder()
                                             .startObject()
-                                            .field("username", "facebook-搜索日志")
-                                            .field("date", new Date())
-                                            .field("message", "facebook-搜索")
+                                            .field("EVENTTYPE", "Logon")
+                                            .field("TIMESTAMP", "2012/2/3 5:19")
+                                            .field("UID_", "976234742")
+                                            .field("GID", "0")
+                                            .field("USERNAME", "wbxadmin")
+                                            .field("EMAIL", "admin@webex.com")
+                                            .field("WEBSERVERNAME", "hawdtest/admin")
+                                            .field("REMOTEHOST", "10.224.65.44")
+                                            .field("USERAGENT", "Mozilla/5.0 (Windows NT 6.1; rv:9.0.1) Gecko/20100101 Firefox/9.0.1")
+                                            .field("REFERER", "0")
+                                            .field("CONFID", "1090723152")
+                                            .field("MEETINGTYPE", "0")
+                                            .field("REFNUM1", "0")
+                                            .field("SITEID", "593968567")
+                                            .field("REFSTR1", "LogonFailed")
                                             .endObject()
                             )
             );
