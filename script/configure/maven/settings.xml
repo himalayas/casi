@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
-    <localRepository> ~/.m2/repository</localRepository>
-
-
+    <localRepository>D:/repository</localRepository>
     <pluginGroups>
 
     </pluginGroups>
@@ -39,6 +35,16 @@
         <profile>
             <repositories>
                 <repository>
+                    <id>kuaidi</id>
+                    <name>kuaidi repository</name>
+                    <url>http://192.168.3.161:9081/content/repositories/releases/</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </releases>
+                </repository>
+                <repository>
                     <id>maven-net-cn</id>
                     <name>Maven China Mirror</name>
                     <url>http://maven.net.cn/content/groups/public/</url>
@@ -52,7 +58,6 @@
                 <repository>
                     <id>central</id>
                     <name>Maven Repository Switchboard</name>
-                    <layout>default</layout>
                     <url>http://repo1.maven.org/maven2</url>
                     <snapshots>
                         <enabled>false</enabled>
@@ -61,7 +66,6 @@
                 <repository>
                     <id>spy</id>
                     <name>Spy Repository</name>
-                    <layout>default</layout>
                     <url>http://files.couchbase.com/maven2/</url>
                     <snapshots>
                         <enabled>false</enabled>
